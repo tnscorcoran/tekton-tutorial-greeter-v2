@@ -1,0 +1,6 @@
+= Using Private Repositories and Registries
+
+include::master@tekton-tutorial:ROOT:partial$_attributes.adoc[]
+:chapter-namespace: workspace-auth-demo
+
+include::master@tekton-tutorial:ROOT:partial$_private_reg_repos.adoc[]

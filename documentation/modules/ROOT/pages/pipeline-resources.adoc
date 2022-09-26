@@ -1,0 +1,6 @@
+= Pipeline Resources
+include::master@tekton-tutorial:ROOT:partial$_attributes.adoc[]
+:k8s-resource: build-resources.yaml
+:chapter-namespace: tektontutorial
+
+include::master@tekton-tutorial:ROOT:partial$_pipeline_resources.adoc[]

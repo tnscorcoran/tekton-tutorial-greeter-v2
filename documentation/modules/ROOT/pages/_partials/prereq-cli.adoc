@@ -1,0 +1,64 @@
+
+The following checks ensure that each chapter exercises are done with the right environment settings.
+
+[tabs]
+====
+Minikube::
++
+--
+* Kubernetes should be v1.19+
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+kubectl version --short
+----
+
+The output should be like
+
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
+Client Version: {kubernetes-version}
+Server Version: {kubernetes-version}
+----
+
+--
+OpenShift::
++
+--
+* OpenShift CLI should be {openshift-version}
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc version 
+----
+
+The output should be like
+
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
+Client Version: {kubernetes-version}
+Server Version: {openshift-version}
+Kubernetes Version: {kubernetes-version}
+----
+
+* Make sure to be on `{tutorial-namespace}` OpenShift project
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc project -q 
+----
+
+If you are not on `{tutorial-namespace}` project, then run following command to change to `{tutorial-namespace}` project:
+
+[.console-input]
+[source,bash,subs="+macros,+attributes"]
+----
+oc project {tutorial-namespace}
+----
+--
+====

@@ -1,0 +1,24 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: greeter-app-build-
+  labels:
+    tekton.dev/pipeline: greeter-app-build
+spec:
+  serviceAccountName: build-bot
+  params:
+    - name: app-profile
+      value: quarkus
+    # enable this for OpenShift
+    #    - name: storageDriver
+    #      value: vfs
+    -
+  pipelineRef:
+    name: greeter-app-build
+  workspaces:
+    - name: maven-settings
+      configmap:
+        name: maven-settings
+    - name: source
+      persistentVolumeClaim:
+        claimName: tekton-tutorial-sources

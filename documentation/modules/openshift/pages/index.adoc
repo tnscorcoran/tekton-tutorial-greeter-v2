@@ -1,0 +1,8 @@
+= OpenShift Pipelines
+
+[IMPORTANT]
+====
+All the exercies as part of this chapter works only with OpenShift
+====
+
+

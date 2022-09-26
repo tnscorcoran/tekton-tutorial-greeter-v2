@@ -1,0 +1,41 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: tekton-greeter-trigger-template
+spec:
+  params:
+    - name: gitrevision
+      description: The git revision
+      default: staging
+    - name: gitrepositoryurl
+      description: The git repository url
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: greeter-app-
+        labels:
+          tekton.dev/pipeline: greeter-app-deploy
+      spec:
+        serviceAccountName: pipeline
+        pipelineRef:
+          name: greeter-app-deploy
+        params:
+          - name: github-repo-url
+            value: '$(tt.params.gitrepositoryurl)'
+          - name: github-repo-revision
+            value: '$(tt.params.gitrevision)'
+          - name: context-dir
+            # must be either 'quarkus' or 'springboot'
+            value: quarkus
+          - name: image-name
+            # For OpenShift builds, this should be patched to point to a suitable image stream for the project
+            value: example.com/tekton-tutorial/greeter
+        workspaces:
+          - name: maven-settings
+            configmap:
+              name: maven-settings
+          - name: source
+            persistentVolumeClaim:
+              claimName: tekton-tutorial-sources

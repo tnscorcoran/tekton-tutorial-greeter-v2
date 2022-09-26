@@ -1,0 +1,14 @@
+:moduledir: ..
+:cli: kubectl
+:branch: master
+:github-repo: https://github.com/redhat-scholars/tekton-tutorial/blob/{branch}
+:tutorial-apps-repo: https://github.com/redhat-scholars/tekton-tutorial-greeter
+:experimental:
+
+:tekton-repo: https://github.com/tektoncd/pipeline/releases/download
+:pipelines-repo: pipelines
+:tasks-repo: tasks
+:workspaces-repo: workspaces
+:resources-repo: resources
+:triggers-repo: triggers
+:auth-repo: private_repos_reg

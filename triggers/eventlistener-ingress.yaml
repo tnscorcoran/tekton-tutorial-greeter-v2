@@ -1,0 +1,9 @@
+---
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: el-gitea-webhook-ingress
+spec:
+  virtualhost:
+    fqdn: will be replaced
+  routes: []
